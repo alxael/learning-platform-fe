@@ -1,0 +1,11 @@
+<mat-toolbar class="navbar">
+  <button mat-button routerLink="">
+    <span class="mat-h1">Learning Platform</span>
+  </button>
+  <span class="spacer"></span>
+  <mat-slide-toggle
+    #darkModeSwitch
+    [checked]="isDarkTheme | async"
+    (change)="toggleDarkTheme($event.checked)"
+  ></mat-slide-toggle>
+</mat-toolbar>
