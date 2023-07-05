@@ -1,1 +1,8 @@
-<p>footer works!</p>
+<mat-toolbar>
+  <span
+    class="footer-text"
+    [ngClass]="{ 'mat-h3': !matches, 'mat-h5': matches }"
+  >
+    &copy; {{ currentYear }} Learning Platform All Rights Reserved
+  </span>
+</mat-toolbar>

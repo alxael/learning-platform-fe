@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemeService } from './modules/core/services/theme.service';
 
@@ -9,8 +9,10 @@ import { ThemeService } from './modules/core/services/theme.service';
 })
 export class AppComponent {
   isDarkTheme: Observable<boolean>;
-  
-  constructor(private themeService: ThemeService) {
+
+  constructor(
+    private themeService: ThemeService
+  ) {
     this.isDarkTheme = this.themeService.isDarkTheme;
   }
 }

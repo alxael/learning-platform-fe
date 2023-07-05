@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from '../auth/auth.module';
+import { MaterialModule } from '../material/material.module';
+import { RouterModule } from '@angular/router';
 
 import { PresentationPageComponent } from './components/presentation-page/presentation-page.component';
 
@@ -10,7 +12,9 @@ import { PresentationPageComponent } from './components/presentation-page/presen
   ],
   imports: [
     CommonModule,
-    AuthModule
+    AuthModule,
+    MaterialModule,
+    RouterModule
   ],
   exports: [
     PresentationPageComponent

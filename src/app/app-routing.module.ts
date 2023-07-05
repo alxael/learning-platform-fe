@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { PresentationPageComponent } from './modules/content/components/presentation-page/presentation-page.component';
+import { SignInPageComponent } from './modules/auth/components/sign-in-page/sign-in-page.component';
+import { SignUpPageComponent } from './modules/auth/components/sign-up-page/sign-up-page.component';
 
 const routes: Routes = [
   {
@@ -9,20 +12,22 @@ const routes: Routes = [
   },
   {
     path: 'signin',
-    component: PresentationPageComponent,
+    component: SignInPageComponent,
   },
   {
     path: 'signup',
-    component: PresentationPageComponent,
+    component: SignUpPageComponent,
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

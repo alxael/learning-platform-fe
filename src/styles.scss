@@ -5,8 +5,8 @@
 $learning-platform-typography: mat.define-typography-config();
 @include mat.typography-hierarchy($learning-platform-typography);
 
-$learning-platform-fe-primary: mat.define-palette(mat.$deep-purple-palette);
-$learning-platform-fe-accent: mat.define-palette(mat.$pink-palette);
+$learning-platform-fe-primary: mat.define-palette(mat.$blue-palette);
+$learning-platform-fe-accent: mat.define-palette(mat.$green-palette);
 $learning-platform-fe-warn: mat.define-palette(mat.$red-palette);
 
 $learning-platform-fe-light-theme: mat.define-light-theme(

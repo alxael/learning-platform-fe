@@ -6,14 +6,14 @@ import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.comp
 @NgModule({
   declarations: [
     SignInPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     SignInPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
   ]
 })
 export class AuthModule { }

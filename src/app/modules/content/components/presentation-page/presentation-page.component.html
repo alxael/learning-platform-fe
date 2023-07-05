@@ -1,3 +1,104 @@
 <div class="hero">
-  <div class="mat-headline-1">Learning Platform</div>
+  <div
+    class="hero-title"
+    [ngClass]="{ 'mat-headline-1': !matches, 'mat-headline-2': matches }"
+  >
+    Learning Platform
+  </div>
+  <div
+    class="hero-subtitle"
+    [ngClass]="{ 'mat-headline-4': !matches, 'mat-headline-5': matches }"
+  >
+    Some random catchy subtitle
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div class="content-card">
+  <img
+    [ngStyle]="{ width: !matches ? '40%' : '100%' }"
+    src="assets/user-focus.svg"
+  />
+  <mat-card [ngStyle]="{ width: !matches ? '40%' : '100%' }">
+    <mat-card-header>
+      <mat-card-title class="mat-headline-3 content-card-title"
+        >User Focus</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content class="mat-subtitle-1">
+      At our learning website, your success is our top priority. We are
+      dedicated to providing a user-focused experience that caters to your
+      unique learning needs. Through extensive research and user feedback, we
+      have created a platform that is highly intuitive and easy to navigate. Our
+      goal is to empower you, the learner, by placing emphasis on personalized
+      learning paths, meaningful content, and seamless interactions. Join us and
+      embark on a learning journey that is tailored to your goals and
+      aspirations.
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-divider></mat-divider>
+<div class="content-card">
+  <img
+    [hidden]="!matches"
+    [ngStyle]="{ width: !matches ? '40%' : '100%' }"
+    src="assets/interactive-experience.svg"
+  />
+  <mat-card [ngStyle]="{ width: !matches ? '40%' : '100%' }">
+    <mat-card-header>
+      <mat-card-title class="mat-headline-3 content-card-title"
+        >Interactive Experience</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content class="mat-subtitle-1">
+      Engage, interact, and learn with our highly interactive website. We
+      believe that active participation leads to better understanding and
+      retention of knowledge. With a wealth of interactive features such as
+      quizzes, discussions, and virtual simulations, our platform allows you to
+      fully immerse yourself in the learning process. Through an engaging blend
+      of multimedia elements and gamification techniques, we aim to make your
+      learning experience enjoyable, insightful, and stimulating. Get ready to
+      unlock your full potential in a truly interactive environment.
+    </mat-card-content>
+  </mat-card>
+  <img
+    [hidden]="matches"
+    [ngStyle]="{ width: !matches ? '40%' : '100%' }"
+    src="assets/interactive-experience.svg"
+  />
+</div>
+<mat-divider></mat-divider>
+<div class="content-card">
+  <img
+    [ngStyle]="{ width: !matches ? '40%' : '100%' }"
+    src="assets/dynamic-learning-process.svg"
+  />
+  <mat-card [ngStyle]="{ width: !matches ? '40%' : '100%' }">
+    <mat-card-header>
+      <mat-card-title class="mat-headline-3 content-card-title"
+        >Dynamic Learning Process</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content class="mat-subtitle-1">
+      Say goodbye to traditional, static learning methods. Our learning website
+      employs a dynamic approach to learning that evolves alongside your needs.
+      We understand that everyone learns at their own pace, and our platform
+      adapts to your progress and preferences. With intelligent algorithms and
+      personalized recommendations, you can experience tailor-made learning
+      paths that are constantly updated based on your performance. Embrace an
+      adaptive learning process that keeps you engaged, challenged, and
+      motivated every step of the way.
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-divider></mat-divider>
+<div class="ending" matRipple [matRippleTrigger]="trigger">
+  <div
+    class="ending-title"
+    [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+  >
+    It all starts with a click.
+  </div>
+  <button mat-stroked-button class="ending-button" routerLink="/signup">
+    <span class="mat-headline-5" #trigger>Sign up</span>
+  </button>
 </div>
