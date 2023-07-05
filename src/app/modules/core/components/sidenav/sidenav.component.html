@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    autosize
+    autoFocus="false"
+    [opened]="isSidenavOpen | async"
+    (openedChange)="change(sidenav.opened)"
+    fixedInViewport="true"
+    mode="over"
+  >
+    <mat-list (click)="change(false)">
+      <mat-list-item>
+        <div class="header">
+          <button mat-button routerLink="">
+            <span class="mat-h1">Learning Platform</span>
+          </button>
+          <div class="spacer"></div>
+          <button mat-icon-button (click)="change(false)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/signin">
+          <span class="mat-h2">Sign in</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/signup">
+          <span class="mat-h2">Sign up</span>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

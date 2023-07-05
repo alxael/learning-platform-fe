@@ -1,0 +1,84 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+.hero-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+mat-card {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.content-card {
+  padding: clamp(2rem, 3%, 5rem);
+  display: flex;
+  flex-direction: "row";
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+
+.content-card-title {
+  margin-bottom: 1rem;
+}
+
+.ending-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ending-button {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 64px);
+    background-image: linear-gradient(
+      to right,
+      mat.get-color-from-palette($accent-palette, 500),
+      mat.get-color-from-palette($primary-palette, 500)
+    );
+  }
+  .ending {
+    height: 30vh;
+    padding: clamp(2rem, 3%, 5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+      to right,
+      mat.get-color-from-palette($primary-palette, 500),
+      mat.get-color-from-palette($accent-palette, 500)
+    );
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}

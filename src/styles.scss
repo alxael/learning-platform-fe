@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use './app/modules/content/components/presentation-page/presentation-page.component.scss' as presentation-page;
+@include mat.core();
+
+$learning-platform-typography: mat.define-typography-config();
+@include mat.typography-hierarchy($learning-platform-typography);
+
+$learning-platform-fe-primary: mat.define-palette(mat.$blue-palette);
+$learning-platform-fe-accent: mat.define-palette(mat.$green-palette);
+$learning-platform-fe-warn: mat.define-palette(mat.$red-palette);
+
+$learning-platform-fe-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $learning-platform-fe-primary,
+      accent: $learning-platform-fe-accent,
+      warn: $learning-platform-fe-warn,
+    ),
+  )
+);
+
+$learning-platform-fe-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $learning-platform-fe-primary,
+      accent: $learning-platform-fe-accent,
+      warn: $learning-platform-fe-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($learning-platform-fe-light-theme);
+@include presentation-page.theme($learning-platform-fe-light-theme);
+
+.dark-theme {
+  @include mat.all-component-themes($learning-platform-fe-dark-theme);
+  @include presentation-page.theme($learning-platform-fe-dark-theme);
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 12px;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

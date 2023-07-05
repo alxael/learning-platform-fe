@@ -1,10 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { PresentationPageComponent } from './modules/content/components/presentation-page/presentation-page.component';
+import { SignInPageComponent } from './modules/auth/components/sign-in-page/sign-in-page.component';
+import { SignUpPageComponent } from './modules/auth/components/sign-up-page/sign-up-page.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PresentationPageComponent,
+  },
+  {
+    path: 'signin',
+    component: SignInPageComponent,
+  },
+  {
+    path: 'signup',
+    component: SignUpPageComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
