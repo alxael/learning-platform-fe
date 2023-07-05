@@ -10,7 +10,7 @@ export class PresentationPageComponent {
   matches = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe(Breakpoints.XSmall).subscribe(result => {
+    this.breakpointObserver.observe('(max-width: 800px)').subscribe(result => {
       this.matches = result.matches;
     })
   }

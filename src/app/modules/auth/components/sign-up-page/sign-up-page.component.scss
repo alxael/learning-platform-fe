@@ -6,7 +6,27 @@
   height: calc(100vh - 64px);
 }
 
-.title {
+mat-card {
+  width: clamp(25rem, 50%, 50rem);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+mat-card-header {
+  margin-bottom: 1.5rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.completed-text {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
