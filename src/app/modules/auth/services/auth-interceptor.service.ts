@@ -33,7 +33,7 @@ export default class AuthInterceptorService implements HttpInterceptor {
       if(error instanceof HttpErrorResponse) {
         if(error.status === 401 || error.status === 500) {
           this.identityService.removeToken();
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/signin');
         }
         return;
       }
