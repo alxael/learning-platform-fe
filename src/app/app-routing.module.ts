@@ -27,6 +27,7 @@ const routes: Routes = [
     path: 'signup/:email/:token',
     component: EmailConfirmationPageComponent,
   },
+  {
     path: 'feed',
     component: FeedPageComponent,
     canActivate: [AuthGuard],
