@@ -10,18 +10,17 @@ import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.comp
 import { EmailConfirmationPageComponent } from './components/email-confirmation-page/email-confirmation-page.component';
 
 import AuthInterceptorService from './services/auth-interceptor.service';
+
 @NgModule({
-  declarations: [
-    SignInPageComponent,
-    SignUpPageComponent,
-    EmailConfirmationPageComponent,
-  ],
+  declarations: [SignInPageComponent, SignUpPageComponent],
   imports: [CommonModule, MaterialModule, FormsModule, ApiModule],
-  exports: [
-    SignInPageComponent,
-    SignUpPageComponent,
-    EmailConfirmationPageComponent,
+  exports: [SignInPageComponent, SignUpPageComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
   ],
-  providers: [],
 })
 export class AuthModule {}
