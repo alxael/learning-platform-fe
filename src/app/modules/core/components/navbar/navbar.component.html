@@ -1,22 +1,45 @@
 <mat-toolbar class="navbar">
-  <ng-template [ngIf]="!matches" [ngIfElse]="elseMatches">
-    <button mat-button routerLink="">
-      <span class="mat-h1">Learning Platform</span>
-    </button>
+  <ng-template [ngIf]="!(token | async)" [ngIfElse]="notToken">
+    <ng-template [ngIf]="!matches" [ngIfElse]="elseMatches">
+      <button mat-button routerLink="">
+        <span class="mat-h1">Learning Platform</span>
+      </button>
+    </ng-template>
+    <ng-template #elseMatches>
+      <button style="margin: 0" mat-icon-button (click)="openSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </ng-template>
+    <span class="spacer"></span>
+    <ng-template [ngIf]="!matches">
+      <button mat-stroked-button routerLink="/signin">
+        <span class="mat-h3">Sign in</span>
+      </button>
+      <button mat-stroked-button routerLink="/signup">
+        <span class="mat-h3">Sign up</span>
+      </button>
+    </ng-template>
   </ng-template>
-  <ng-template #elseMatches>
-    <button style="margin: 0" mat-icon-button (click)="openSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </ng-template>
-  <span class="spacer"></span>
-  <ng-template [ngIf]="!matches">
-    <button mat-stroked-button routerLink="/signin">
-      <span class="mat-h3">Sign in</span>
-    </button>
-    <button mat-stroked-button routerLink="/signup">
-      <span class="mat-h3">Sign up</span>
-    </button>
+  <ng-template #notToken>
+    <ng-template [ngIf]="!matches" [ngIfElse]="elseMatches">
+      <button mat-button routerLink="/feed">
+        <span class="mat-h1">Learning Platform</span>
+      </button>
+    </ng-template>
+    <ng-template #elseMatches>
+      <button style="margin: 0" mat-icon-button (click)="openSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </ng-template>
+    <span class="spacer"></span>
+    <ng-template [ngIf]="!matches">
+      <button mat-stroked-button routerLink="/profile">
+        <span class="mat-h3">Profile</span>
+      </button>
+      <button mat-stroked-button routerLink="/" (click)="onSignOut()">
+        <span class="mat-h3">Sign out</span>
+      </button>
+    </ng-template>
   </ng-template>
   <mat-slide-toggle
     #darkThemeSwitch

@@ -3,12 +3,14 @@ import { Observable } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SidenavService } from '../../services/sidenav.service';
+import IdentityService from 'src/app/modules/auth/services/identity.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  token: Observable<string | null>;
   isDarkTheme: Observable<boolean>;
   isDrawerOpen: Observable<boolean>;
   matches = false;
@@ -20,13 +22,15 @@ export class NavbarComponent {
   constructor(
     private themeService: ThemeService,
     private sidenavService: SidenavService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private identityService: IdentityService
   ) {
     this.isDarkTheme = this.themeService.isDarkTheme;
     this.isDrawerOpen = this.sidenavService.isSidenavOpen;
     this.breakpointObserver.observe(Breakpoints.XSmall).subscribe(result => {
       this.matches = result.matches;
     });
+    this.token = this.identityService.token.asObservable();
   }
 
   sun =
@@ -51,5 +55,9 @@ export class NavbarComponent {
 
   openSidenav = () => {
     this.sidenavService.setSidenavOpen(true);
+  }
+
+  onSignOut = () => {
+    this.identityService.removeToken();
   }
 }
