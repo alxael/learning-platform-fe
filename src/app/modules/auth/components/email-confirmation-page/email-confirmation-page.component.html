@@ -1,0 +1,29 @@
+<div class="background">
+  <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
+    <mat-spinner></mat-spinner>
+  </ng-template>
+  <ng-template #notLoading>
+    <ng-template [ngIf]="error === false" [ngIfElse]="notError">
+      <div
+        class="confirmation-text"
+        [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >
+        Thank you for confirming your email!
+      </div>
+    </ng-template>
+    <ng-template #notError>
+      <div
+        class="confirmation-text"
+        [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >
+        An error has occured!
+      </div>
+      <div
+        class="confirmation-text"
+        [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+      >
+        Please ensure that your email confirmation link is valid.
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

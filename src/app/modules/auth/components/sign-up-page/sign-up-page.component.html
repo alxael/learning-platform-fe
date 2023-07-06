@@ -1,3 +1,77 @@
 <div class="background">
-  <div class="mat-headline-1 title">Sign up page!</div>
+  <ng-template [ngIf]="!completed" [ngIfElse]="notCompleted">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <span class="mat-headline-2">Sign up</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #f="ngForm">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              required
+              ngModel
+              name="email"
+              #email="ngModel"
+              email
+              type="email"
+            />
+            <ng-template [ngIf]="!email.valid && email.touched">
+              <mat-error>Please enter a valid email address.</mat-error>
+            </ng-template>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input
+              matInput
+              required
+              ngModel
+              name="password"
+              #password="ngModel"
+              [type]="hidePassword ? 'password' : 'text'"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hidePassword = !hidePassword"
+            >
+              <mat-icon>{{
+                hidePassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+            <ng-template [ngIf]="!password.valid && password.touched">
+              <mat-error
+                >Please ensure that the password contains between 8 and 20
+                characters, a small letter, a big letter, a number and a
+                symbol.</mat-error
+              >
+            </ng-template>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="onSubmit(f)" color="primary">
+          <span class="mat-h4">Submit</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-template>
+  <ng-template #notCompleted>
+    <div
+      class="completed-text"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+    >
+      Thank you for signing up!
+    </div>
+    <div
+      class="completed-text"
+      [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+    >
+      To start exploring our courses, please confirm your email address.
+    </div>
+  </ng-template>
 </div>
