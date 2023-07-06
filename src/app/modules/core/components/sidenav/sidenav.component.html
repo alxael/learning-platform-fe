@@ -8,29 +8,56 @@
     fixedInViewport="true"
     mode="over"
   >
-    <mat-list (click)="change(false)">
-      <mat-list-item>
-        <div class="header">
-          <button mat-button routerLink="">
-            <span class="mat-h1">Learning Platform</span>
+    <ng-template [ngIf]="!(token | async)" [ngIfElse]="notToken">
+      <mat-list (click)="change(false)">
+        <mat-list-item>
+          <div class="header">
+            <button mat-button routerLink="">
+              <span class="mat-h1">Learning Platform</span>
+            </button>
+            <div class="spacer"></div>
+            <button mat-icon-button (click)="change(false)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button routerLink="/signin">
+            <span class="mat-h2">Sign in</span>
           </button>
-          <div class="spacer"></div>
-          <button mat-icon-button (click)="change(false)">
-            <mat-icon>close</mat-icon>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button routerLink="/signup">
+            <span class="mat-h2">Sign up</span>
           </button>
-        </div>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/signin">
-          <span class="mat-h2">Sign in</span>
-        </button>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/signup">
-          <span class="mat-h2">Sign up</span>
-        </button>
-      </mat-list-item>
-    </mat-list>
+        </mat-list-item>
+      </mat-list>
+    </ng-template>
+    <ng-template #notToken>
+      <mat-list (click)="change(false)">
+        <mat-list-item>
+          <div class="header">
+            <button mat-button routerLink="feed">
+              <span class="mat-h1">Learning Platform</span>
+            </button>
+            <div class="spacer"></div>
+            <button mat-icon-button (click)="change(false)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button routerLink="/profile">
+            <span class="mat-h2">Profile</span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button routerLink="/" (click)="onSignOut()">
+            <span class="mat-h2">Sign out</span>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <ng-content></ng-content>
