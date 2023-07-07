@@ -7,52 +7,49 @@
     >
   </div>
   <mat-dialog-content>
-    <form #f="ngForm">
-      <mat-form-field>
+    <form [formGroup]="formGroup">
+      <mat-form-field class="mat-h4 form-field">
         <mat-label>First name</mat-label>
         <input
           matInput
-          [ngModel]="data.firstName"
-          name="firstName"
-          #firstName="ngModel"
           type="text"
+          id="firstName"
+          name="firstName"
+          formControlName="firstName"
         />
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="mat-h4 form-field">
         <mat-label>Last name</mat-label>
         <input
           matInput
-          [ngModel]="data.lastName"
-          name="lastName"
-          #lastName="ngModel"
           type="text"
+          id="lastName"
+          name="lastName"
+          formControlName="lastName"
         />
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="mat-h4 form-field">
         <mat-label>Email</mat-label>
         <input
           matInput
-          required
-          [ngModel]="data.email"
-          name="email"
-          #email="ngModel"
           email
           type="email"
+          id="email"
+          name="email"
+          formControlName="email"
         />
-        <ng-template [ngIf]="!email.valid && email.touched">
+        <ng-template [ngIf]="emailFormControl.invalid">
           <mat-error>Please enter a valid email address.</mat-error>
         </ng-template>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="mat-h4 form-field">
         <mat-label>Date of birth</mat-label>
         <input
           matInput
           [matDatepicker]="picker"
-          [ngModel]="getDate(data.dateOfBirth)"
-          [min]="minDate"
-          [max]="maxDate"
+          id="dateOfBirth"
           name="dateOfBirth"
-          #dateOfBirth="ngModel"
+          formControlName="dateOfBirth"
         />
         <mat-datepicker-toggle
           matIconSuffix
@@ -60,13 +57,45 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <div
+        class="file-upload"
+        [ngClass]="{ 'mat-h2': !matches, 'mat-h3': matches }"
+      >
+        <span>Profile picture</span>
+        <span class="spacer"></span>
+        <input
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+        <ng-template [ngIf]="data.photoUrl">
+          <button
+            mat-mini-fab
+            color="warn"
+            class="delete-button"
+            (click)="onProfilePictureDelete()"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+        <button mat-mini-fab color="primary" (click)="fileUpload.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-stroked-button mat-dialog-close>
+    <button mat-stroked-button color="warn" mat-dialog-close>
       <span class="mat-h4">Cancel</span>
     </button>
-    <button mat-stroked-button mat-dialog-close cdkFocusInitial>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="onSubmit()"
+      mat-dialog-close
+      cdkFocusInitial
+    >
       <span class="mat-h4">Submit</span>
     </button>
   </mat-dialog-actions>

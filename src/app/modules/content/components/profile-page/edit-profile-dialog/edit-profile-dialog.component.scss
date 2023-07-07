@@ -3,15 +3,39 @@
 }
 
 .dialog-header {
-  margin: 1rem 0 1rem 0;
+  margin: 1rem 0 0 0;
 }
 
 mat-form-field {
   width: 100%;
 }
 
+.form-field {
+  margin: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.file-upload {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-input {
+  display: none;
+}
+
+.delete-button {
+  margin-right: 1rem;
 }

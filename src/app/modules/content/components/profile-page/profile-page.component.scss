@@ -16,22 +16,23 @@ mat-card {
   border-radius: 1rem;
 }
 
-mat-card-header {
+mat-card-title-group {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+.card-avatar {
+  margin: 0;
+  width: clamp(70px, 10vw, 100px);
+  height: clamp(70px, 10vw, 100px);
+}
+
 .card-title {
   margin: 0;
 }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.edit-button {
-  margin-bottom: 1rem;
+.admin-button {
+  margin-left: 1rem;
 }

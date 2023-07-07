@@ -36,7 +36,7 @@ export default class AuthInterceptorService {
       tap({
         error: (error: any) => {
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 401 || error.status === 500) {
+            if (error.status === 401) {
               this.identityService.removeToken();
               this.router.navigateByUrl('/signin');
             }

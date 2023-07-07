@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthModule } from '../auth/auth.module';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PresentationPageComponent } from './components/presentation-page/presentation-page.component';
 import { FeedPageComponent } from './components/feed-page/feed-page.component';
@@ -25,6 +25,7 @@ import { EditProfileDialogComponent } from './components/profile-page/edit-profi
     MaterialModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PresentationPageComponent,
