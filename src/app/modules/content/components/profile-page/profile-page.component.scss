@@ -6,7 +6,32 @@
   height: calc(100vh - 64px);
 }
 
-.title {
-  text-align: center;
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  width: clamp(25rem, 60%, 50rem);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+mat-card-header {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-title {
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-button {
   margin-bottom: 1rem;
 }

@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ApplicationRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,11 +9,27 @@ export class ThemeService {
   private _darkTheme = new BehaviorSubject<boolean>(true);
   isDarkTheme = this._darkTheme.asObservable();
 
-  constructor(private ref: ApplicationRef) {
+  addOverlayClass = (darkTheme: boolean) => {
+    const overlayContainerClasses =
+      this._overlayContainer.getContainerElement().classList;
+    const themeClassesToRemove = Array.from(overlayContainerClasses).filter(
+      (item: string) => item.includes('dark-theme') || item.includes('light-theme')
+    );
+    if (themeClassesToRemove.length) {
+      overlayContainerClasses.remove(...themeClassesToRemove);
+    }
+    overlayContainerClasses.add(darkTheme ? 'dark-theme' : 'light-theme');
+  };
+
+  constructor(
+    private ref: ApplicationRef,
+    private _overlayContainer: OverlayContainer
+  ) {
     const darkTheme =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     this._darkTheme.next(darkTheme);
+    this.addOverlayClass(darkTheme);
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (e) => {
@@ -24,5 +41,6 @@ export class ThemeService {
 
   setDarkTheme = (isDarkTheme: boolean) => {
     this._darkTheme.next(isDarkTheme);
+    this.addOverlayClass(isDarkTheme);
   };
 }

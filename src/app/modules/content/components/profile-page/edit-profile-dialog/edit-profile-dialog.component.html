@@ -1,0 +1,73 @@
+<div class="background">
+  <div mat-dialog-title>
+    <span
+      class="dialog-header"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >Edit profile</span
+    >
+  </div>
+  <mat-dialog-content>
+    <form #f="ngForm">
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          [ngModel]="data.firstName"
+          name="firstName"
+          #firstName="ngModel"
+          type="text"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          [ngModel]="data.lastName"
+          name="lastName"
+          #lastName="ngModel"
+          type="text"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          required
+          [ngModel]="data.email"
+          name="email"
+          #email="ngModel"
+          email
+          type="email"
+        />
+        <ng-template [ngIf]="!email.valid && email.touched">
+          <mat-error>Please enter a valid email address.</mat-error>
+        </ng-template>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Date of birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [ngModel]="getDate(data.dateOfBirth)"
+          [min]="minDate"
+          [max]="maxDate"
+          name="dateOfBirth"
+          #dateOfBirth="ngModel"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>
+      <span class="mat-h4">Cancel</span>
+    </button>
+    <button mat-stroked-button mat-dialog-close cdkFocusInitial>
+      <span class="mat-h4">Submit</span>
+    </button>
+  </mat-dialog-actions>
+</div>
