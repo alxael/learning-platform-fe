@@ -6,7 +6,33 @@
   height: calc(100vh - 64px);
 }
 
-.title {
-  text-align: center;
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  width: clamp(25rem, 60%, 50rem);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+mat-card-title-group {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-avatar {
+  margin: 0;
+  width: clamp(70px, 10vw, 100px);
+  height: clamp(70px, 10vw, 100px);
+}
+
+.card-title {
+  margin: 0;
+}
+
+.admin-button {
+  margin-left: 1rem;
 }

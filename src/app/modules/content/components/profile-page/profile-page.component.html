@@ -1,3 +1,89 @@
 <div class="background">
-  <div class="mat-headline-1 title">Profile page!</div>
+  <mat-card *ngIf="data | async as data; else notData">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>
+          <span
+            [ngClass]="{
+              'mat-headline-2': !matches,
+              'mat-headline-3': matches
+            }"
+            >Profile</span
+          >
+        </mat-card-title>
+        <span class="spacer"></span>
+        <img
+          class="card-avatar"
+          mat-card-avatar
+          [src]="
+            data.photoUrl
+              ? data.photoUrl
+              : 'https://via.placeholder.com/500x500?text=No+image'
+          "
+        />
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <span
+            [ngClass]="{ 'mat-headline-6': !matches, 'mat-h3': matches }"
+            matListItemTitle
+            >First name</span
+          >
+          <span [ngClass]="{ 'mat-h4': !matches, 'mat-h5': matches }">{{
+            data.firstName !== "" ? data.firstName : "None"
+          }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span
+            [ngClass]="{ 'mat-headline-6': !matches, 'mat-h3': matches }"
+            matListItemTitle
+            >Last name</span
+          >
+          <span [ngClass]="{ 'mat-h4': !matches, 'mat-h5': matches }">{{
+            data.lastName !== "" ? data.lastName : "None"
+          }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span
+            [ngClass]="{ 'mat-headline-6': !matches, 'mat-h3': matches }"
+            matListItemTitle
+            >Email</span
+          >
+          <span [ngClass]="{ 'mat-h4': !matches, 'mat-h5': matches }">{{
+            data.email
+          }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span
+            [ngClass]="{ 'mat-headline-6': !matches, 'mat-h3': matches }"
+            matListItemTitle
+            >Date of birth</span
+          >
+          <span [ngClass]="{ 'mat-h4': !matches, 'mat-h5': matches }">{{
+            getDate(data.dateOfBirth)
+          }}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button (click)="onClickEdit(data)" color="primary">
+        <span class="mat-h4">Edit</span>
+      </button>
+      <ng-template [ngIf]="data.roles?.includes('Admin')">
+        <button
+          mat-raised-button
+          class="admin-button"
+          color="accent"
+          routerLink="/admin"
+        >
+          <span class="mat-h4">Admin</span>
+        </button>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+  <ng-template #notData>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>
