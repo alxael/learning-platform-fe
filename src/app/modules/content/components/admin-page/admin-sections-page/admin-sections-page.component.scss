@@ -3,23 +3,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 264px);
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
-mat-card {
+.container {
   width: clamp(25rem, 70%, 75rem);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
 }
 
-mat-card-title-group {
-  margin-bottom: 1rem;
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.no-margin {
+  margin: 0;
 }

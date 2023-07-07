@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PresentationPageComponent } from './modules/content/components/presentation-page/presentation-page.component';
@@ -7,9 +7,11 @@ import { SignUpPageComponent } from './modules/auth/components/sign-up-page/sign
 import { EmailConfirmationPageComponent } from './modules/auth/components/email-confirmation-page/email-confirmation-page.component';
 import { FeedPageComponent } from './modules/content/components/feed-page/feed-page.component';
 import { ProfilePageComponent } from './modules/content/components/profile-page/profile-page.component';
+import { AdminPageComponent } from './modules/content/components/admin-page/admin-page.component';
+import { AdminSectionsPageComponent } from './modules/content/components/admin-page/admin-sections-page/admin-sections-page.component';
+import { AdminSectionPageComponent } from './modules/content/components/admin-page/admin-sections-page/admin-section-page/admin-section-page.component';
 
 import { AuthGuard } from './modules/auth/guards/auth.guard';
-import { AdminPageComponent } from './modules/content/components/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,16 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/sections',
+    component: AdminSectionsPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/section/:id',
+    component: AdminSectionPageComponent,
     canActivate: [AuthGuard],
   },
   {
