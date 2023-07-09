@@ -43,6 +43,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatQuillModule } from './modules/mat-quill/mat-quill.module';
 
 @NgModule({
   exports: [
@@ -88,6 +89,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MatQuillModule,
     OverlayModule,
     PortalModule,
     ScrollingModule,

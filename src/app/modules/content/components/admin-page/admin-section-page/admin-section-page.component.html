@@ -6,17 +6,17 @@
         [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
         >Sections</span
       >
-      <button mat-raised-button color="accent" (click)="onSectionAddClick(null)">
+      <button mat-fab extended color="accent" (click)="onSectionAddClick(null)">
         <mat-icon>add</mat-icon>
         Section
       </button>
     </div>
     <mat-accordion multi>
-      <app-admin-sections-list-item
+      <app-admin-section-list-item
         *ngFor="let item of list"
         [data]="item"
         [parentSectionId]="null"
-      ></app-admin-sections-list-item>
+      ></app-admin-section-list-item>
     </mat-accordion>
   </div>
   <ng-template #notData>

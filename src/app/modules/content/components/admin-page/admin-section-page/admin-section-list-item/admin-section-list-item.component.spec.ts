@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminSectionsListItemComponent } from './admin-sections-list-item.component';
+import { AdminSectionListItemComponent } from './admin-section-list-item.component';
 
 describe('AdminSectionsListItemComponent', () => {
-  let component: AdminSectionsListItemComponent;
-  let fixture: ComponentFixture<AdminSectionsListItemComponent>;
+  let component: AdminSectionListItemComponent;
+  let fixture: ComponentFixture<AdminSectionListItemComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminSectionsListItemComponent]
+      declarations: [AdminSectionListItemComponent]
     });
-    fixture = TestBed.createComponent(AdminSectionsListItemComponent);
+    fixture = TestBed.createComponent(AdminSectionListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

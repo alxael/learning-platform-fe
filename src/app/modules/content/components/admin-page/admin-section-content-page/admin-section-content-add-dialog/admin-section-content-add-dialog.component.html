@@ -1,0 +1,59 @@
+<div class="background">
+  <div mat-dialog-title>
+    <span
+      class="dialog-header"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >Add content</span
+    >
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="formGroup">
+      <mat-form-field class="mat-h4 form-field">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          id="title"
+          name="title"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <div class="content-section">
+        <span class="mat-h4">Content</span>
+        <mat-form-field class="mat-h4 form-field">
+          <mat-quill
+            [ngStyle]="{
+              filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
+            }"
+            #content
+            formControlName="content"
+          ></mat-quill>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="mat-h4 form-field">
+        <mat-label>Order number</mat-label>
+        <input
+          matInput
+          type="number"
+          id="orderNumber"
+          name="orderNumber"
+          formControlName="orderNumber"
+        />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button color="warn" mat-dialog-close>
+      <span class="mat-h4">Cancel</span>
+    </button>
+    <button
+      mat-stroked-button
+      (click)="onClickSubmit()"
+      color="primary"
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      <span class="mat-h4">Submit</span>
+    </button>
+  </mat-dialog-actions>
+</div>

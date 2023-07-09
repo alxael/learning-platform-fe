@@ -8,8 +8,9 @@ import { EmailConfirmationPageComponent } from './modules/auth/components/email-
 import { FeedPageComponent } from './modules/content/components/feed-page/feed-page.component';
 import { ProfilePageComponent } from './modules/content/components/profile-page/profile-page.component';
 import { AdminPageComponent } from './modules/content/components/admin-page/admin-page.component';
-import { AdminSectionsPageComponent } from './modules/content/components/admin-page/admin-sections-page/admin-sections-page.component';
-import { AdminSectionPageComponent } from './modules/content/components/admin-page/admin-sections-page/admin-section-page/admin-section-page.component';
+import { AdminSectionPageComponent } from './modules/content/components/admin-page/admin-section-page/admin-section-page.component';
+import { AdminSectionContentPageComponent } from './modules/content/components/admin-page/admin-section-content-page/admin-section-content-page.component';
+import { AdminSectionContentQuizPageComponent } from './modules/content/components/admin-page/admin-section-content-quiz-page/admin-section-content-quiz-page.component';
 
 import { AuthGuard } from './modules/auth/guards/auth.guard';
 
@@ -46,13 +47,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'admin/sections',
-    component: AdminSectionsPageComponent,
+    path: 'admin/section',
+    component: AdminSectionPageComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'admin/section/:id',
-    component: AdminSectionPageComponent,
+    path: 'admin/section-content/:id',
+    component: AdminSectionContentPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/section-content-quiz/:id',
+    component: AdminSectionContentQuizPageComponent,
     canActivate: [AuthGuard],
   },
   {

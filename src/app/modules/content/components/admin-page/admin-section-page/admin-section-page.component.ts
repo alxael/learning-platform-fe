@@ -7,11 +7,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdminSectionAddDialogComponent } from './admin-section-add-dialog/admin-section-add-dialog.component';
 
 @Component({
-  selector: 'app-admin-sections-page',
-  templateUrl: './admin-sections-page.component.html',
-  styleUrls: ['./admin-sections-page.component.scss'],
+  selector: 'app-admin-section-page',
+  templateUrl: './admin-section-page.component.html',
+  styleUrls: ['./admin-section-page.component.scss'],
 })
-export class AdminSectionsPageComponent {
+export class AdminSectionPageComponent {
   matches = false;
   data: Observable<SectionDto[]>;
 

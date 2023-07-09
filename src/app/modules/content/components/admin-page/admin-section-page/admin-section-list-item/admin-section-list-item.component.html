@@ -1,0 +1,79 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header
+    class="no-margin"
+    [ngClass]="{ 'mat-headline-4': !matches, 'mat-headline-5': matches }"
+  >
+    <mat-panel-title>
+      <span>{{ data.title }}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-panel-description>
+    <span class="no-margin">{{ data.id }}</span>
+  </mat-panel-description>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+      >Section content</span
+    >
+    <button
+      mat-fab
+      extended
+      color="primary"
+      [routerLink]="['/admin/section-content', data.id]"
+    >
+      <mat-icon>edit</mat-icon>
+      Content
+    </button>
+  </div>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+      >Subsections</span
+    >
+    <button
+      mat-fab
+      extended
+      color="accent"
+      (click)="onSectionAddClick(data.id ? data.id : null)"
+    >
+      <mat-icon>add</mat-icon>
+      Section
+    </button>
+  </div>
+  <mat-accordion multi>
+    <app-admin-section-list-item
+      *ngFor="let item of data.childSections"
+      [data]="item"
+      [parentSectionId]="data.id ? data.id : null"
+    ></app-admin-section-list-item>
+  </mat-accordion>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+      >Edit section</span
+    >
+    <button mat-fab extended color="primary" (click)="onSectionEditClick(data)">
+      <mat-icon>edit</mat-icon>
+      Section
+    </button>
+  </div>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{ 'mat-headline-5': !matches, 'mat-headline-6': matches }"
+      >Delete section</span
+    >
+    <button
+      mat-fab
+      extended
+      color="warn"
+      (click)="onSectionDeleteClick(data.id ? data.id : null)"
+    >
+      <mat-icon>delete</mat-icon>
+      Section
+    </button>
+  </div>
+</mat-expansion-panel>
