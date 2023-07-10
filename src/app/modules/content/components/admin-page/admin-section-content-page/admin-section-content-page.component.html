@@ -1,4 +1,10 @@
 <div class="background">
+  <div
+    [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+    style="text-align: center"
+  >
+    {{ sectionTitle }}
+  </div>
   <div class="container" *ngIf="data | async as list; else notData">
     <div class="header">
       <span
@@ -6,7 +12,12 @@
         [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
         >Content</span
       >
-      <button mat-fab extended color="accent" (click)="onSectionContentAddClick()">
+      <button
+        mat-fab
+        extended
+        color="accent"
+        (click)="onSectionContentAddClick()"
+      >
         <mat-icon>add</mat-icon>
         Content
       </button>
@@ -38,7 +49,12 @@
           >
             Content
           </span>
-          <button mat-fab extended color="primary" (click)="onSectionContentEditClick(item)">
+          <button
+            mat-fab
+            extended
+            color="primary"
+            (click)="onSectionContentEditClick(item)"
+          >
             <mat-icon>edit</mat-icon>
             Content
           </button>
@@ -62,13 +78,21 @@
           <button
             mat-fab
             extended
-            color="primary"
-            [routerLink]="['/admin/section-content-quiz', item.id]"
+            color="accent"
+            (click)="onSectionContentQuizAddClick(item.id ? item.id : null)"
           >
-            <mat-icon>edit</mat-icon>
-            Quizzes
+            <mat-icon>add</mat-icon>
+            Quiz
           </button>
         </div>
+        <mat-accordion multi>
+          <app-admin-section-content-quiz-list-item
+            *ngFor="let quiz of item.sectionContentQuizzes; let i = index"
+            [orderNumber]="i + 1"
+            [quizData]="quiz"
+            [sectionContentId]="item.id ? item.id : null"
+          ></app-admin-section-content-quiz-list-item>
+        </mat-accordion>
         <div class="section">
           <span
             class="no-margin"

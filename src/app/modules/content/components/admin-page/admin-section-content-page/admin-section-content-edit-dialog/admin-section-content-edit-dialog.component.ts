@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SectionContentDto } from 'src/app/modules/api/models';
 import { SectionContentService } from 'src/app/modules/api/services';
 import { ThemeService } from 'src/app/modules/core/services/theme.service';
-import { MatQuill } from 'src/app/modules/material/components/mat-quill/mat-quill.component';
 
 @Component({
   selector: 'app-admin-section-content-edit-dialog',
@@ -26,10 +25,6 @@ export class AdminSectionContentEditDialogComponent {
       Validators.required,
     ]),
   });
-  @ViewChild('content', {
-    static: true,
-  })
-  editor: MatQuill;
 
   constructor(
     private breakpointObserver: BreakpointObserver,

@@ -20,15 +20,15 @@
       </mat-form-field>
       <div class="content-section">
         <span class="mat-h4">Content</span>
-        <mat-form-field class="mat-h4 form-field">
-          <mat-quill
-            [ngStyle]="{
-              filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
-            }"
-            #content
-            formControlName="content"
-          ></mat-quill>
-        </mat-form-field>
+        <quill-editor
+          [sanitize]="true"
+          [ngStyle]="{
+            filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
+          }"
+          [styles]="{ 'margin-bottom': '2rem' }"
+          #content
+          formControlName="content"
+        ></quill-editor>
       </div>
       <mat-form-field class="mat-h4 form-field">
         <mat-label>Order number</mat-label>

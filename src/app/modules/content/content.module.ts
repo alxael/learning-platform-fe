@@ -17,11 +17,13 @@ import { AdminSectionAddDialogComponent } from './components/admin-page/admin-se
 import { AdminSectionDeleteDialogComponent } from './components/admin-page/admin-section-page/admin-section-delete-dialog/admin-section-delete-dialog.component';
 import { AdminSectionEditDialogComponent } from './components/admin-page/admin-section-page/admin-section-edit-dialog/admin-section-edit-dialog.component';
 import { AdminSectionContentPageComponent } from './components/admin-page/admin-section-content-page/admin-section-content-page.component';
-import { AdminSectionContentQuizPageComponent } from './components/admin-page/admin-section-content-quiz-page/admin-section-content-quiz-page.component';
 import { AdminSectionContentDeleteDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-delete-dialog/admin-section-content-delete-dialog.component';
 import { AdminSectionContentAddDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-add-dialog/admin-section-content-add-dialog.component';
 import { AdminSectionContentEditDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-edit-dialog/admin-section-content-edit-dialog.component';
-
+import { AdminSectionContentQuizListItemComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-list-item/admin-section-content-quiz-list-item.component';
+import { AdminSectionContentQuizAddDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-add-dialog/admin-section-content-quiz-add-dialog.component';
+import { AdminSectionContentQuizEditDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-edit-dialog/admin-section-content-quiz-edit-dialog.component';
+import { AdminSectionContentQuizDeleteDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-delete-dialog/admin-section-content-quiz-delete-dialog.component';
 @NgModule({
   declarations: [
     PresentationPageComponent,
@@ -35,10 +37,13 @@ import { AdminSectionContentEditDialogComponent } from './components/admin-page/
     AdminSectionDeleteDialogComponent,
     AdminSectionEditDialogComponent,
     AdminSectionContentPageComponent,
-    AdminSectionContentQuizPageComponent,
     AdminSectionContentDeleteDialogComponent,
     AdminSectionContentAddDialogComponent,
     AdminSectionContentEditDialogComponent,
+    AdminSectionContentQuizListItemComponent,
+    AdminSectionContentQuizAddDialogComponent,
+    AdminSectionContentQuizEditDialogComponent,
+    AdminSectionContentQuizDeleteDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +52,7 @@ import { AdminSectionContentEditDialogComponent } from './components/admin-page/
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule
+    QuillModule,
   ],
   exports: [
     PresentationPageComponent,
@@ -57,7 +62,6 @@ import { AdminSectionContentEditDialogComponent } from './components/admin-page/
     AdminSectionPageComponent,
     AdminSectionPageComponent,
     AdminSectionContentPageComponent,
-    AdminSectionContentQuizPageComponent
   ],
 })
 export class ContentModule {}

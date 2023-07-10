@@ -54,7 +54,7 @@ mat-card {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 64px);
+    height: 100vh;
     background-image: linear-gradient(
       to right,
       mat.get-color-from-palette($accent-palette, 500),

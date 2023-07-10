@@ -1,0 +1,78 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header
+    class="no-margin"
+    [ngClass]="{
+      'mat-headline-5': !matches,
+      'mat-headline-6': matches
+    }"
+  >
+    <mat-panel-title>
+      <span>Quiz {{ orderNumber }}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-panel-description>
+    <span class="no-margin">{{ quizData.id }}</span>
+  </mat-panel-description>
+  <span
+    class="no-margin"
+    [ngClass]="{
+      'mat-headline-5': !matches,
+      'mat-headline-6': matches
+    }"
+  >
+    Description
+  </span>
+  <quill-view-html
+    class="mat-body"
+    [content]="quizData.description ? quizData.description : ''"
+    [sanitize]="true"
+    format="html"
+  ></quill-view-html>
+  <ng-template [ngIf]="quizData.quizTypeId === 0">
+    <span
+      class="no-margin"
+      [ngClass]="{
+        'mat-headline-5': !matches,
+        'mat-headline-6': matches
+      }"
+    >
+      Correct text answer
+    </span>
+    <quill-view-html
+      class="mat-body"
+      [content]="quizData.correctAnswer ? quizData.correctAnswer : ''"
+      [sanitize]="true"
+      format="html"
+    ></quill-view-html>
+  </ng-template>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{
+        'mat-headline-5': !matches,
+        'mat-headline-6': matches
+      }"
+    >
+      Edit quiz
+    </span>
+    <button mat-fab extended color="primary" (click)="onSectionContentQuizEditClick()">
+      <mat-icon>edit</mat-icon>
+      Quiz
+    </button>
+  </div>
+  <div class="section">
+    <span
+      class="no-margin"
+      [ngClass]="{
+        'mat-headline-5': !matches,
+        'mat-headline-6': matches
+      }"
+    >
+      Delete quiz
+    </span>
+    <button mat-fab extended color="warn" (click)="onSectionContentQuizDeleteClick()">
+      <mat-icon>delete</mat-icon>
+      Quiz
+    </button>
+  </div>
+</mat-expansion-panel>

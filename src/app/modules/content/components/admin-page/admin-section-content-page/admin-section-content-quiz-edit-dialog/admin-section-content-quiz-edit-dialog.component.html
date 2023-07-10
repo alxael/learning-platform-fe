@@ -3,43 +3,47 @@
     <span
       class="dialog-header"
       [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
-      >Add content</span
+      >Edit quiz</span
     >
   </div>
   <mat-dialog-content>
     <form [formGroup]="formGroup">
-      <mat-form-field class="mat-h4 form-field">
-        <mat-label>Title</mat-label>
-        <input
-          matInput
-          type="text"
-          id="title"
-          name="title"
-          formControlName="title"
-        />
-      </mat-form-field>
       <div class="content-section">
-        <span class="mat-h4">Content</span>
+        <span class="mat-h4">Description</span>
         <quill-editor
           [sanitize]="true"
           [ngStyle]="{
             filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
           }"
           [styles]="{ 'margin-bottom': '2rem' }"
-          #content
-          formControlName="content"
+          #description
+          formControlName="description"
         ></quill-editor>
       </div>
       <mat-form-field class="mat-h4 form-field">
-        <mat-label>Order number</mat-label>
-        <input
-          matInput
+        <mat-label>Quiz type</mat-label>
+        <mat-select
           type="number"
-          id="orderNumber"
-          name="orderNumber"
-          formControlName="orderNumber"
-        />
+          id="quizTypeId"
+          name="quizTypeId"
+          formControlName="quizTypeId"
+        >
+          <mat-option [value]="0">Text</mat-option>
+          <mat-option [value]="1">File</mat-option>
+        </mat-select>
       </mat-form-field>
+      <div class="content-section" *ngIf="formGroup.value.quizTypeId === 0">
+        <span class="mat-h4">Correct answer</span>
+        <quill-editor
+          [sanitize]="true"
+          [ngStyle]="{
+            filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
+          }"
+          [styles]="{ 'margin-bottom': '2rem' }"
+          #correctAnswer
+          formControlName="correctAnswer"
+        ></quill-editor>
+      </div>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

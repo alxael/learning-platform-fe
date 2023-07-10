@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SectionContentService } from 'src/app/modules/api/services';
-import { MatQuill } from 'src/app/modules/material/components/mat-quill/mat-quill.component';
 import { ThemeService } from 'src/app/modules/core/services/theme.service';
 
 @Component({
@@ -23,11 +22,7 @@ export class AdminSectionContentAddDialogComponent {
     content: new FormControl('', [Validators.required]),
     orderNumber: new FormControl(0, [Validators.required]),
   });
-  @ViewChild('content', {
-    static: true,
-  })
-  editor: MatQuill;
-
+  
   constructor(
     private breakpointObserver: BreakpointObserver,
     private themeService: ThemeService,

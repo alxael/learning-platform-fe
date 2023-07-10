@@ -8,6 +8,7 @@ import { SectionContentService } from 'src/app/modules/api/services';
 import { AdminSectionContentDeleteDialogComponent } from './admin-section-content-delete-dialog/admin-section-content-delete-dialog.component';
 import { AdminSectionContentAddDialogComponent } from './admin-section-content-add-dialog/admin-section-content-add-dialog.component';
 import { AdminSectionContentEditDialogComponent } from './admin-section-content-edit-dialog/admin-section-content-edit-dialog.component';
+import { AdminSectionContentQuizAddDialogComponent } from './admin-section-content-quiz-add-dialog/admin-section-content-quiz-add-dialog.component';
 
 @Component({
   selector: 'app-admin-section-content-page',
@@ -17,6 +18,7 @@ import { AdminSectionContentEditDialogComponent } from './admin-section-content-
 export class AdminSectionContentPageComponent {
   matches = false;
   sectionId: string | null;
+  sectionTitle: string | null;
   data: Observable<SectionContentDto[]>;
 
   constructor(
@@ -30,6 +32,7 @@ export class AdminSectionContentPageComponent {
     });
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.sectionId = params.get('id');
+      this.sectionTitle = params.get('title');
     });
     this.data =
       this.sectionContentService.apiSectionSectionIdContentAdminGet$Json({
@@ -59,6 +62,17 @@ export class AdminSectionContentPageComponent {
       {
         width: 'clamp(25rem, 60%, 50rem)',
         data: { sectionContentId: sectionContentId, sectionId: this.sectionId },
+      }
+    );
+  };
+
+  onSectionContentQuizAddClick = (sectionContentId: string | null) => {
+    const dialogRef = this.dialog.open(
+      AdminSectionContentQuizAddDialogComponent,
+      {
+        width: 'clamp(25rem, 75%, 75rem)',
+        data: { sectionContentId: sectionContentId },
+        disableClose: true,
       }
     );
   };

@@ -10,7 +10,6 @@ import { ProfilePageComponent } from './modules/content/components/profile-page/
 import { AdminPageComponent } from './modules/content/components/admin-page/admin-page.component';
 import { AdminSectionPageComponent } from './modules/content/components/admin-page/admin-section-page/admin-section-page.component';
 import { AdminSectionContentPageComponent } from './modules/content/components/admin-page/admin-section-content-page/admin-section-content-page.component';
-import { AdminSectionContentQuizPageComponent } from './modules/content/components/admin-page/admin-section-content-quiz-page/admin-section-content-quiz-page.component';
 
 import { AuthGuard } from './modules/auth/guards/auth.guard';
 
@@ -52,13 +51,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'admin/section-content/:id',
+    path: 'admin/section-content/:id/:title',
     component: AdminSectionContentPageComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'admin/section-content-quiz/:id',
-    component: AdminSectionContentQuizPageComponent,
     canActivate: [AuthGuard],
   },
   {
