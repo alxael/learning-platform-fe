@@ -13,7 +13,6 @@ import {
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
 
 export const EN_UK_FORMAT = {
@@ -69,7 +68,6 @@ export class EditProfileDialogComponent {
     private breakpointObserver: BreakpointObserver,
     private profileService: ProfileService,
     private fileService: FileService,
-    private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<EditProfileDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserProfileDto
   ) {

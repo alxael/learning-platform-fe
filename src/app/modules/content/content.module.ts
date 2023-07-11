@@ -24,6 +24,9 @@ import { AdminSectionContentQuizListItemComponent } from './components/admin-pag
 import { AdminSectionContentQuizAddDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-add-dialog/admin-section-content-quiz-add-dialog.component';
 import { AdminSectionContentQuizEditDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-edit-dialog/admin-section-content-quiz-edit-dialog.component';
 import { AdminSectionContentQuizDeleteDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-quiz-delete-dialog/admin-section-content-quiz-delete-dialog.component';
+import { AdminSectionContentFileAddDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-file-add-dialog/admin-section-content-file-add-dialog.component';
+import { AdminSectionContentFileDeleteDialogComponent } from './components/admin-page/admin-section-content-page/admin-section-content-file-delete-dialog/admin-section-content-file-delete-dialog.component';
+import { AdminSectionContentFileListItemComponent } from './components/admin-page/admin-section-content-page/admin-section-content-file-list-item/admin-section-content-file-list-item.component';
 @NgModule({
   declarations: [
     PresentationPageComponent,
@@ -44,6 +47,9 @@ import { AdminSectionContentQuizDeleteDialogComponent } from './components/admin
     AdminSectionContentQuizAddDialogComponent,
     AdminSectionContentQuizEditDialogComponent,
     AdminSectionContentQuizDeleteDialogComponent,
+    AdminSectionContentFileAddDialogComponent,
+    AdminSectionContentFileDeleteDialogComponent,
+    AdminSectionContentFileListItemComponent,
   ],
   imports: [
     CommonModule,

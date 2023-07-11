@@ -101,6 +101,34 @@
               'mat-headline-6': matches
             }"
           >
+            Content files
+          </span>
+          <button
+            mat-fab
+            extended
+            color="accent"
+            (click)="onSectionContentFileAddClick(item.id ? item.id : null)"
+          >
+            <mat-icon>add</mat-icon>
+            File
+          </button>
+        </div>
+        <mat-accordion multi>
+          <app-admin-section-content-file-list-item
+            *ngFor="let file of item.sectionFiles; let i = index"
+            [orderNumber]="i + 1"
+            [fileData]="file"
+            [sectionContentId]="item.id ? item.id : null"
+          ></app-admin-section-content-file-list-item>
+        </mat-accordion>
+        <div class="section">
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-5': !matches,
+              'mat-headline-6': matches
+            }"
+          >
             Delete content
           </span>
           <button

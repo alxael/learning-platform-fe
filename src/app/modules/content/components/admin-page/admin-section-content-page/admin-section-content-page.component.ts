@@ -9,6 +9,7 @@ import { AdminSectionContentDeleteDialogComponent } from './admin-section-conten
 import { AdminSectionContentAddDialogComponent } from './admin-section-content-add-dialog/admin-section-content-add-dialog.component';
 import { AdminSectionContentEditDialogComponent } from './admin-section-content-edit-dialog/admin-section-content-edit-dialog.component';
 import { AdminSectionContentQuizAddDialogComponent } from './admin-section-content-quiz-add-dialog/admin-section-content-quiz-add-dialog.component';
+import { AdminSectionContentFileAddDialogComponent } from './admin-section-content-file-add-dialog/admin-section-content-file-add-dialog.component';
 
 @Component({
   selector: 'app-admin-section-content-page',
@@ -73,6 +74,16 @@ export class AdminSectionContentPageComponent {
         width: 'clamp(25rem, 75%, 75rem)',
         data: { sectionContentId: sectionContentId },
         disableClose: true,
+      }
+    );
+  };
+
+  onSectionContentFileAddClick = (sectionContentId: string | null) => {
+    const dialogRef = this.dialog.open(
+      AdminSectionContentFileAddDialogComponent,
+      {
+        width: 'clamp(25rem, 75%, 75rem)',
+        data: { sectionContentId: sectionContentId },
       }
     );
   };
