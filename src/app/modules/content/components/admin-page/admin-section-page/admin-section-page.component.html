@@ -1,0 +1,25 @@
+<div class="background">
+  <div class="container" *ngIf="data | async as list; else notData">
+    <div class="header">
+      <span
+        class="no-margin"
+        [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+        >Sections</span
+      >
+      <button mat-fab extended color="accent" (click)="onSectionAddClick(null)">
+        <mat-icon>add</mat-icon>
+        Section
+      </button>
+    </div>
+    <mat-accordion multi>
+      <app-admin-section-list-item
+        *ngFor="let item of list"
+        [data]="item"
+        [parentSectionId]="null"
+      ></app-admin-section-list-item>
+    </mat-accordion>
+  </div>
+  <ng-template #notData>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>

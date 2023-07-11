@@ -1,0 +1,27 @@
+<div class="background">
+  <div mat-dialog-title>
+    <span
+      class="dialog-header"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >Delete file</span
+    >
+  </div>
+  <mat-dialog-content>
+    <span class="mat-h4"
+      >Are you sure you want to delete this file? Once deleted, the file can not be recovered.</span
+    >
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button mat-stroked-button color="primary" mat-dialog-close cdkFocusInitial>
+      <span class="mat-h4">Cancel</span>
+    </button>
+    <button
+      mat-stroked-button
+      (click)="onClickConfirm()"
+      color="warn"
+      mat-dialog-close
+    >
+      <span class="mat-h4">Confirm</span>
+    </button>
+  </mat-dialog-actions>
+</div>

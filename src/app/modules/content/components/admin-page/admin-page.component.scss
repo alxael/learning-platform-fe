@@ -6,7 +6,20 @@
   height: calc(100vh - 64px);
 }
 
-.title {
-  text-align: center;
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  width: clamp(25rem, 70%, 75rem);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+mat-card-title-group {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

@@ -1,0 +1,39 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header
+    class="no-margin"
+    [ngClass]="{
+      'mat-headline-5': !matches,
+      'mat-headline-6': matches
+    }"
+  >
+    <mat-panel-title>
+      <span>File {{ orderNumber }}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-panel-description>
+    <span class="no-margin">{{ fileData.id }}</span>
+  </mat-panel-description>
+  <div class="section">
+    <a
+      style="text-decoration: none"
+      [href]="fileData.fileUrl"
+      class="no-margin"
+      [ngClass]="{
+        'mat-headline-5': !matches,
+        'mat-headline-6': matches
+      }"
+    >
+      File URL
+    </a>
+
+    <button
+      mat-fab
+      extended
+      color="warn"
+      (click)="onSectionContentQuizDeleteClick()"
+    >
+      <mat-icon>delete</mat-icon>
+      File
+    </button>
+  </div>
+</mat-expansion-panel>

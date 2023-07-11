@@ -1,0 +1,42 @@
+<div class="background">
+  <div mat-dialog-title>
+    <span
+      class="dialog-header"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >Add file</span
+    >
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="formGroup">
+      <div
+        class="file-upload mat-h4"
+      >
+        <span>Upload file</span>
+        <span class="spacer"></span>
+        <input
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+        <button mat-mini-fab color="primary" (click)="fileUpload.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button color="warn" mat-dialog-close>
+      <span class="mat-h4">Cancel</span>
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="onSubmit()"
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      <span class="mat-h4">Submit</span>
+    </button>
+  </mat-dialog-actions>
+</div>

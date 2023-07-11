@@ -1,0 +1,35 @@
+mat-expansion-panel {
+  padding: 1rem;
+}
+
+mat-expansion-panel-header {
+  margin: 0;
+}
+
+mat-panel-description {
+  margin-bottom: 1rem;
+}
+
+mat-panel-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+button {
+  margin-left: 1rem;
+}

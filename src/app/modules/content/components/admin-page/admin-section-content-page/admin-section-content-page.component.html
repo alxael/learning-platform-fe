@@ -1,0 +1,150 @@
+<div class="background">
+  <div
+    [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+    style="text-align: center"
+  >
+    {{ sectionTitle }}
+  </div>
+  <div class="container" *ngIf="data | async as list; else notData">
+    <div class="header">
+      <span
+        class="no-margin"
+        [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+        >Content</span
+      >
+      <button
+        mat-fab
+        extended
+        color="accent"
+        (click)="onSectionContentAddClick()"
+      >
+        <mat-icon>add</mat-icon>
+        Content
+      </button>
+    </div>
+    <mat-card *ngFor="let item of list">
+      <mat-card-header>
+        <mat-card-title>
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-4': !matches,
+              'mat-headline-5': matches
+            }"
+            >{{ item.title }}</span
+          >
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span class="no-margin">{{ item.id }}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="section">
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-5': !matches,
+              'mat-headline-6': matches
+            }"
+          >
+            Content
+          </span>
+          <button
+            mat-fab
+            extended
+            color="primary"
+            (click)="onSectionContentEditClick(item)"
+          >
+            <mat-icon>edit</mat-icon>
+            Content
+          </button>
+        </div>
+        <quill-view-html
+          class="mat-body"
+          [content]="item.content ? item.content : ''"
+          [sanitize]="true"
+          format="html"
+        ></quill-view-html>
+        <div class="section">
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-5': !matches,
+              'mat-headline-6': matches
+            }"
+          >
+            Content quizzes
+          </span>
+          <button
+            mat-fab
+            extended
+            color="accent"
+            (click)="onSectionContentQuizAddClick(item.id ? item.id : null)"
+          >
+            <mat-icon>add</mat-icon>
+            Quiz
+          </button>
+        </div>
+        <mat-accordion multi>
+          <app-admin-section-content-quiz-list-item
+            *ngFor="let quiz of item.sectionContentQuizzes; let i = index"
+            [orderNumber]="i + 1"
+            [quizData]="quiz"
+            [sectionContentId]="item.id ? item.id : null"
+          ></app-admin-section-content-quiz-list-item>
+        </mat-accordion>
+        <div class="section">
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-5': !matches,
+              'mat-headline-6': matches
+            }"
+          >
+            Content files
+          </span>
+          <button
+            mat-fab
+            extended
+            color="accent"
+            (click)="onSectionContentFileAddClick(item.id ? item.id : null)"
+          >
+            <mat-icon>add</mat-icon>
+            File
+          </button>
+        </div>
+        <mat-accordion multi>
+          <app-admin-section-content-file-list-item
+            *ngFor="let file of item.sectionFiles; let i = index"
+            [orderNumber]="i + 1"
+            [fileData]="file"
+            [sectionContentId]="item.id ? item.id : null"
+          ></app-admin-section-content-file-list-item>
+        </mat-accordion>
+        <div class="section">
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-5': !matches,
+              'mat-headline-6': matches
+            }"
+          >
+            Delete content
+          </span>
+          <button
+            mat-fab
+            extended
+            color="warn"
+            (click)="onSectionContentDeleteClick(item.id ? item.id : null)"
+          >
+            <mat-icon>delete</mat-icon>
+            Content
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <ng-template #notData>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>
