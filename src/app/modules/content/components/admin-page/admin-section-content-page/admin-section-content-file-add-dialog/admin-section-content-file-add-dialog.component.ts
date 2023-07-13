@@ -39,7 +39,6 @@ export class AdminSectionContentFileAddDialogComponent {
 
   onSubmit = () => {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value.file);
       this.fileService
         .apiFileAdminSectionSectionContentIdPost({
           sectionContentId: this.data.sectionContentId,

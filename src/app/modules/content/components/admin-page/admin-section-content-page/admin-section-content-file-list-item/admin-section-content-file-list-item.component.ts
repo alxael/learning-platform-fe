@@ -25,13 +25,12 @@ export class AdminSectionContentFileListItemComponent {
   }
 
   onSectionContentQuizDeleteClick = () => {
-    console.log(this.fileData.id);
     const dialogRef = this.dialog.open(
       AdminSectionContentFileDeleteDialogComponent,
       {
         width: 'clamp(25rem, 60%, 50rem)',
         data: {
-          sectionFile: this.fileData.id
+          sectionFileId: this.fileData.id
         },
       }
     );

@@ -27,7 +27,6 @@ export class EmailConfirmationPageComponent {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params['email'], params['token'])
       this.authService
         .apiAuthRegisterConfirmPost({
           body: {

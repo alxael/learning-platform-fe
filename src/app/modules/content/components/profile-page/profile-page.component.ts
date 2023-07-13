@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { UserProfileDto } from 'src/app/modules/api/models';
 import { ProfileService } from 'src/app/modules/api/services';
 import { EditProfileDialogComponent } from './edit-profile-dialog/edit-profile-dialog.component';
+import IdentityService from 'src/app/modules/auth/services/identity.service';
 
 @Component({
   selector: 'app-profile-page',

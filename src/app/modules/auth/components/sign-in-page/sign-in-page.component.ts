@@ -34,6 +34,7 @@ export class SignInPageComponent {
         .pipe(
           map((response) => {
             this.identityService.addToken(JSON.parse(response.body as any).token);
+            this.identityService.refreshProfileData();
           })
         )
         .subscribe({

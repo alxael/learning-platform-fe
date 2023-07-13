@@ -7,8 +7,34 @@ mat-button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .spacer {
   display: 1 1 flex;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.example-tree .mat-nested-tree-node div[role=group] {
+  padding-left: 2rem;
+}
+
+.example-tree div[role=group] > .mat-tree-node {
+  padding-left: 2rem;
+}
+
+.tree-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

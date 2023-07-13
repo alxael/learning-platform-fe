@@ -14,6 +14,7 @@ import {
 } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as moment from 'moment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export const EN_UK_FORMAT = {
   parse: {
@@ -68,6 +69,7 @@ export class EditProfileDialogComponent {
     private breakpointObserver: BreakpointObserver,
     private profileService: ProfileService,
     private fileService: FileService,
+    public _matSnackBar: MatSnackBar,
     public dialogRef: MatDialogRef<EditProfileDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserProfileDto
   ) {
@@ -108,12 +110,14 @@ export class EditProfileDialogComponent {
       this.formGroup.patchValue({
         photo: file,
       });
+      this._matSnackBar.open('Photo uploaded!', 'Close', { duration: 3000 });
     }
   };
 
   onProfilePictureDelete = () => {
     this.fileService.apiFileProfilePhotoDelete().subscribe((value) => {
       this.data.photoUrl = null;
-    })
+    });
+    this._matSnackBar.open('Photo deleted!', 'Close', { duration: 3000 });
   }
 }

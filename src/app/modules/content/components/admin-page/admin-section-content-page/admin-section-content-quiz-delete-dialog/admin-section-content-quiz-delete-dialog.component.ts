@@ -26,7 +26,6 @@ export class AdminSectionContentQuizDeleteDialogComponent {
   }
 
   onClickConfirm = () => {
-    console.log(this.data);
     this.sectionContentQuizService
       .apiSectionContentSectionContentIdQuizAdminSectionContentQuizIdDelete({
         ...this.data,
