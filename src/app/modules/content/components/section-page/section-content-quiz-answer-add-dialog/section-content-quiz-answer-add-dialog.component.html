@@ -1,0 +1,91 @@
+<div class="background">
+  <div class="header" mat-dialog-title>
+    <span
+      class="title"
+      [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+      >Quiz</span
+    >
+    <ng-template [ngIf]="userAnswer.answer === null" [ngIfElse]="notUserAnswer">
+      <mat-chip>Unsolved</mat-chip>
+    </ng-template>
+    <ng-template #notUserAnswer>
+      <ng-template [ngIf]="userAnswer.isCorrect" [ngIfElse]="notCorrect">
+        <mat-chip highlighted="true" color="accent">Correct</mat-chip>
+      </ng-template>
+      <ng-template #notCorrect>
+        <mat-chip highlighted="true" color="warn">Incorrect</mat-chip>
+      </ng-template>
+    </ng-template>
+    <span class="spacer"></span>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <quill-view-html
+      class="mat-body"
+      [content]="data.quizData.description ? data.quizData.description : ''"
+      [sanitize]="true"
+      format="html"
+    ></quill-view-html>
+    <form [formGroup]="formGroup">
+      <div
+        class="form-field"
+        *ngIf="data.quizData.quizTypeId === 0; else notText"
+      >
+        <span class="mat-h4">Answer</span>
+        <quill-editor
+          [sanitize]="true"
+          [ngStyle]="{
+            filter: darkTheme ? 'invert(1) hue-rotate(180deg)' : ''
+          }"
+          [styles]="{ 'margin-bottom': '2rem' }"
+          #answer
+          formControlName="answer"
+        ></quill-editor>
+      </div>
+      <ng-template #notText>
+        <div class="file-upload mat-h4">
+          <span *ngIf="!this.answerUrl; else notUrl">Upload file</span>
+          <ng-template #notUrl>
+            <span>Uploaded file: &nbsp;</span>
+            <a style="text-decoration: none" [href]="this.answerUrl">here</a>
+          </ng-template>
+          <span class="spacer"></span>
+          <input
+            type="file"
+            class="file-input"
+            (change)="onFileChange($event)"
+            #fileUpload
+          />
+          <button mat-mini-fab color="primary" (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
+      </ng-template>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-stroked-button
+      (click)="onDeleteAnswer()"
+      [disabled]="
+        (answerUrl === null && data.quizData.quizTypeId === 1) ||
+        (formGroup.value.answer === null && data.quizData.quizTypeId === 0)
+      "
+      color="warn"
+      mat-dialog-close
+    >
+      <span class="mat-h4">Delete</span>
+    </button>
+    <button
+      mat-stroked-button
+      (click)="onSubmitSave()"
+      color="primary"
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      <span class="mat-h4">Submit</span>
+    </button>
+  </mat-dialog-actions>
+</div>

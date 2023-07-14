@@ -3,7 +3,12 @@ mat-button {
   justify-content: flex-start;
 }
 
+mat-sidenav {
+  max-width: 100vw;
+}
+
 .header {
+  padding: 0.5rem 1rem 1rem 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;

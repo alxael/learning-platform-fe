@@ -43,7 +43,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'section/:id',
+    path: 'section/:id/:title',
     component: SectionPageComponent,
     canActivate: [AuthGuard]
   },

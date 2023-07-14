@@ -11,16 +11,14 @@
   >
     <ng-template [ngIf]="!(token | async)" [ngIfElse]="notToken">
       <mat-nav-list (click)="change(false)">
-        <mat-list-item>
-          <div class="header">
-            <button mat-button routerLink="">
-              <span class="mat-h1">Learning Platform</span>
-            </button>
-            <button mat-icon-button (click)="change(false)">
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
-        </mat-list-item>
+        <div class="header">
+          <button mat-button routerLink="">
+            <span class="mat-h1">Learning Platform</span>
+          </button>
+          <button mat-icon-button (click)="change(false)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
         <mat-divider></mat-divider>
         <mat-list-item routerLink="/signin">
           <span class="mat-h2">Sign in</span>
@@ -32,17 +30,15 @@
     </ng-template>
     <ng-template #notToken>
       <mat-nav-list (click)="change(false)">
-        <mat-list-item>
-          <div class="header">
-            <button mat-button routerLink="feed">
-              <span class="mat-h1">Learning Platform</span>
-            </button>
-            <div class="spacer"></div>
-            <button mat-icon-button (click)="change(false)">
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
-        </mat-list-item>
+        <div class="header">
+          <button mat-button routerLink="feed">
+            <span class="mat-h1">Learning Platform</span>
+          </button>
+          <div class="spacer"></div>
+          <button mat-icon-button (click)="change(false)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
         <mat-divider></mat-divider>
         <mat-list-item routerLink="/profile">
           <span class="mat-h2">Profile</span>
@@ -58,7 +54,7 @@
             class="example-tree"
           >
             <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-              <mat-list-item [routerLink]="['/section/', node.id]">
+              <mat-list-item [routerLink]="['/section/', node.id, node.title]">
                 <div class="mat-tree-node">
                   <button
                     [disabled]="!hasChild(0, node)"

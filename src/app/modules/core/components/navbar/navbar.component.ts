@@ -59,6 +59,5 @@ export class NavbarComponent {
 
   onSignOut = () => {
     this.identityService.removeToken();
-    this.identityService.removeProfileData();
   }
 }

@@ -1,1 +1,87 @@
-<p>section-page works!</p>
+<div class="background">
+  <div
+    [ngClass]="{ 'mat-headline-2': !matches, 'mat-headline-3': matches }"
+    style="text-align: center"
+  >
+    {{ sectionTitle }}
+  </div>
+  <div class="container" *ngIf="data | async as list; else notData">
+    <mat-card *ngFor="let item of list">
+      <mat-card-header>
+        <mat-card-title>
+          <span
+            class="no-margin"
+            [ngClass]="{
+              'mat-headline-4': !matches,
+              'mat-headline-5': matches
+            }"
+            >{{ item.title }}</span
+          >
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <quill-view-html
+          class="mat-body"
+          [content]="item.content ? item.content : ''"
+          [sanitize]="true"
+          format="html"
+        ></quill-view-html>
+        <mat-expansion-panel
+          *ngIf="
+            item.sectionContentQuizzes && item.sectionContentQuizzes.length > 0
+          "
+        >
+          <mat-expansion-panel-header>
+            <span
+              class="no-margin"
+              [ngClass]="{
+                'mat-headline-5': !matches,
+                'mat-headline-6': matches
+              }"
+            >
+              Quizzes
+            </span>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item
+              *ngFor="let quiz of item.sectionContentQuizzes; let i = index"
+              (click)="onOpenQuizClick(quiz, item.id ? item.id : null)"
+            >
+              <mat-icon matListItemIcon>{{
+                quiz.quizTypeId === 0 ? "text_fields" : "folder_open"
+              }}</mat-icon>
+              <span class="mat-h4" matListItemTitle>Quiz {{ i + 1 }}</span>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel
+          *ngIf="item.sectionFiles && item.sectionFiles.length > 0"
+        >
+          <mat-expansion-panel-header>
+            <span
+              class="no-margin"
+              [ngClass]="{
+                'mat-headline-5': !matches,
+                'mat-headline-6': matches
+              }"
+            >
+              Files
+            </span>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item
+              *ngFor="let file of item.sectionFiles; let i = index"
+              (click)="onDownloadFileClick(file)"
+            >
+              <mat-icon matListItemIcon>attachment</mat-icon>
+              <span class="mat-h4" matListItemTitle>File {{ i + 1 }}</span>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <ng-template #notData>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>
