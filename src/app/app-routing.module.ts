@@ -10,8 +10,10 @@ import { ProfilePageComponent } from './modules/content/components/profile-page/
 import { AdminPageComponent } from './modules/content/components/admin-page/admin-page.component';
 import { AdminSectionPageComponent } from './modules/content/components/admin-page/admin-section-page/admin-section-page.component';
 import { AdminSectionContentPageComponent } from './modules/content/components/admin-page/admin-section-content-page/admin-section-content-page.component';
+import { SectionPageComponent } from './modules/content/components/section-page/section-page.component';
 
 import { AuthGuard } from './modules/auth/guards/auth.guard';
+import { AdminGuard } from './modules/auth/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -41,19 +43,24 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'section/:id/:title',
+    component: SectionPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'admin',
     component: AdminPageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'admin/section',
     component: AdminSectionPageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'admin/section-content/:id/:title',
     component: AdminSectionContentPageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: '**',

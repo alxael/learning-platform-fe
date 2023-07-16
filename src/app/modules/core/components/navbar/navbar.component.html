@@ -21,16 +21,9 @@
     </ng-template>
   </ng-template>
   <ng-template #notToken>
-    <ng-template [ngIf]="!matches" [ngIfElse]="elseMatches">
-      <button mat-button routerLink="/feed">
-        <span class="mat-h1">Learning Platform</span>
-      </button>
-    </ng-template>
-    <ng-template #elseMatches>
-      <button style="margin: 0" mat-icon-button (click)="openSidenav()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </ng-template>
+    <button style="margin: 0" mat-icon-button (click)="openSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <span class="spacer"></span>
     <ng-template [ngIf]="!matches">
       <button mat-stroked-button routerLink="/profile">

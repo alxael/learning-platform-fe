@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
+import { UserProfileDto } from '../../api/models';
+import { ProfileService } from '../../api/services';
 
 @Injectable({ providedIn: 'root' })
 export default class IdentityService {
   token = new BehaviorSubject<string | null>(null);
-
+  
   constructor() {}
 
   refreshToken = () => {

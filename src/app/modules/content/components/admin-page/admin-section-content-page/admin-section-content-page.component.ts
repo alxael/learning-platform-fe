@@ -33,12 +33,12 @@ export class AdminSectionContentPageComponent {
     });
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.sectionId = params.get('id');
+      this.data =
+        this.sectionContentService.apiSectionSectionIdContentAdminGet$Json({
+          sectionId: this.sectionId as string,
+        });
       this.sectionTitle = params.get('title');
     });
-    this.data =
-      this.sectionContentService.apiSectionSectionIdContentAdminGet$Json({
-        sectionId: this.sectionId as string,
-      });
   }
 
   onSectionContentAddClick = () => {

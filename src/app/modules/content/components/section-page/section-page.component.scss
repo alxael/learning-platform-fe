@@ -12,30 +12,8 @@
   width: clamp(25rem, 70%, 75rem);
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .no-margin {
   margin: 0;
-
-}
-
-button {
-  margin-left: 1rem;
 }
 
 mat-card {
@@ -47,4 +25,17 @@ mat-card {
 
 mat-card-header {
   margin-bottom: 1.5rem;
+}
+
+.mat-mdc-list-item-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+mat-expansion-panel {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+mat-expansion-panel-header {
+  margin: 0;
 }
