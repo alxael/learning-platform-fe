@@ -54,30 +54,17 @@
             </mat-list-item>
           </mat-list>
         </mat-expansion-panel>
-        <mat-expansion-panel
+        <mat-chip-listbox
           *ngIf="item.sectionFiles && item.sectionFiles.length > 0"
         >
-          <mat-expansion-panel-header>
-            <span
-              class="no-margin"
-              [ngClass]="{
-                'mat-headline-5': !matches,
-                'mat-headline-6': matches
-              }"
-            >
-              Files
-            </span>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item
-              *ngFor="let file of item.sectionFiles; let i = index"
-              (click)="onDownloadFileClick(file)"
-            >
-              <mat-icon matListItemIcon>attachment</mat-icon>
-              <span class="mat-h4" matListItemTitle>File {{ i + 1 }}</span>
-            </mat-list-item>
-          </mat-list>
-        </mat-expansion-panel>
+          <mat-chip
+            highlighted="true"
+            *ngFor="let file of item.sectionFiles; let i = index"
+            (click)="onDownloadFileClick(file)"
+          >
+            <span class="mat-h4" matListItemTitle>File {{ i + 1 }}</span>
+          </mat-chip>
+        </mat-chip-listbox>
       </mat-card-content>
     </mat-card>
   </div>
